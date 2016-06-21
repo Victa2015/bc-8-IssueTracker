@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, url_for, request, redirect
 from datetime import datetime
+from forms import SignupForm
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -10,6 +11,11 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'issuetracker2.db')
 db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+def load_user(user_id):
+    return User.get(user_id)
 
 
 @app.route('/')
@@ -24,6 +30,25 @@ def add():
 
 
     return render_template('add.html')
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form = SignupForm(csrf_enabled=False)
+    return render_template('signup.html')
+
+@app.route('/signin', methods=['GET', 'POST'])
+def signin():
+
+
+    return render_template('signin.html')
+@app.route('/dashboard.html', methods=['GET', 'POST'])
+def login():
+
+
+    return render_template('dashboard.html')
+
+
 
 
 @app.errorhandler(404)

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+SIT - Sign In
+{% endblock%}
+
+{% block content %}
+
+<form method="post" action="{{url_for('login')}}">
+  <div class = 'form'>
+    <input type="text" id="input-name" placeholder="email"><br>
+    <input type="password" id="password" placeholder="Enter Password"><br>
+    <input type="submit" id="submit"><br>
+
+</form>
+
+
+
+
+{% endblock %}
+{% block sidebar %}
+    <aside>
+      <h3>Note</h3>
+      <p>Issues with low priority will be handled first.</p>
+    </aside>
+{% endblock %}
