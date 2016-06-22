@@ -5,6 +5,7 @@
 
 {% if current_user.is_authenticated %}
     {{ current_user.username }}
+   {% include 'issue.html' %}
 {% else %}
     Stranger
 {% endif %}!
