@@ -19,11 +19,14 @@ class IssueForm(Form):
                                     message='Please describe your issue.')])
     priority = SelectField('Priority', choices=[
                     ('high', 'High'), ('medium', 'Medium'), ('low', 'Low')])
-    department = SelectField('Department', choices=['Operations', 'Finance', 'Recruitment'])
 
-    submit = SubmitField('Post Issue')
+    department = SelectField('Department', choices=[
+                    ('operations', 'Operations'), ('finance', 'Finance'), ('success', 'Success')])
 
-    def __init__(self, *args, **kwargs):
-        super(IssueForm, self).__init__(*args, **kwargs)
-        self.department.choices = [
-            (dept.id, dept.name) for dept in Department.query.all()]
+
+    submit = SubmitField('Report Issue')
+
+    # def __init__(self, *args, **kwargs):
+    #     super(IssueForm, self).__init__(*args, **kwargs)
+    #     self.department.choices = [
+    #         (dept.id, dept.name) for dept in Department.query.all()]
