@@ -6,7 +6,7 @@
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 {% endblock %}
 {% block body %}
-    
+
             {% block navbar %}
                 <header>
                 <div id="page-wrap">
@@ -28,14 +28,16 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                          {{ current_user.username }} <b class="caret"></b> </a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{ url_for('auth.change_password') }}">Change Password</a></li>
-                                            <li><a href="{{ url_for('auth.change_email_request') }}">Change Email</a></li>
+                                            <li><a href="#">Change Password</a></li>
+                                            <li><a href="#">Change Email</a></li>
                                             <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
                                         </ul>
                                     </li>
                                 {% else %}
                                     <li><a href="{{ url_for('auth.login') }}"><span
                                     class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Log In</a></li>
+                                    <li><a href="{{ url_for('auth.register') }}"><span
+                                    class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Register</a></li>
                                 {% endif %}
                             </ul>
                         </div>
