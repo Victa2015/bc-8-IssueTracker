@@ -12,11 +12,13 @@ def index():
 	return render_template('index.html')
 
 @main.route('/new', methods=['GET', 'POST'])
+@login_required
 def newissue():
 	form = IssueForm()
 
 	return render_template('issue.html', form = form)
 
 @main.route('/myissues', methods=['GET', 'POST'])
+@login_required
 def myissue():
 	return render_template('myissue.html')
