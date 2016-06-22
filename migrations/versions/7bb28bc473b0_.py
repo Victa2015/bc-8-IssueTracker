@@ -1,13 +1,13 @@
-"""Initial Migration
+"""empty message
 
-Revision ID: 156e36e17d59
+Revision ID: 7bb28bc473b0
 Revises: None
-Create Date: 2016-06-21 22:28:40.203453
+Create Date: 2016-06-22 10:39:08.963722
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '156e36e17d59'
+revision = '7bb28bc473b0'
 down_revision = None
 
 from alembic import op
