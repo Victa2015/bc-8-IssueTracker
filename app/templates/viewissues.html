@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {%  import 'bootstrap/wtf.html' as wtf %}
 
-{% block title %}Department | Issues{% endblock %}
+{% block title %}Issues{% endblock %}
 
 {% block page_content %}
 
@@ -31,12 +31,20 @@
                     <td> {{issue.user.username}}</td>
                     <td> {{issue.priority}} </td>
                     <td> <a href="#">Assign</a> </td>
-                    <td> <a href="#">Resolve</a> </td>
+                    {% if issue.closed == 0 %}
+                    <td> <a href="{{url_for('issue.view_issues', issue_id=issue.id, close=True)}}">Resolve</a> </td>
+                    {%else%}
+                    <td> <p style="color: grey">Resolved</p> </td>
+
+                    {%endif%}
 
 
                     <td class="td-actions">
-
+                        {% if issue.closed == 0 %}
+                        <a class="btn btn-danger btn-small" style="width:10px">
+                        {% else %}
                         <a class="btn btn-success btn-small" style="width:10px">
+                        {% endif %}
                         <i class="btn-icon-only icon-ok"></i></a>
 
                     </td>
