@@ -18,11 +18,6 @@ class Department(db.Model):
     def __repr__(self):
         return '<User %r>' % self.name
 
-    from werkzeug.security import generate_password_hash, check_password_hash
-from flask.ext.login import UserMixin
-from . import db, login_manager
-
-
 class Comments(db.Model):
     '''This class creates comment objects
     associated with a user.
@@ -59,7 +54,7 @@ class Issue(db.Model):
                                  backref=db.backref('departments',
                                                     lazy='dynamic'))
     def __repr__(self):
-        return '<User %r>' % self.name 
+        return '<User %r>' % self.name
 
 
 class Role(db.Model):

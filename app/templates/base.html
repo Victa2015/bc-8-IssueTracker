@@ -17,16 +17,15 @@
                                 <strong>T</strong>racker
                             </a>
                         </div>
-                        <div class="container">
-                            <a href="{{ url_for('main.index') }}">
-                                <span class="glyphicon glyphicon-home" aria-hidden="true" style="margin-top: 16px;"></span>
-                                Home
-                            </a>
+                        <div class="container" style="margin-top: 16px;">
+
                             {% if current_user.is_authenticated %}
                             <a href="{{ url_for('main.index') }}">Dashboard</a>
                             <a href="{{ url_for('main.newissue') }}">Raise Issue</a>
                             <a href="{{ url_for('main.myissue') }}">My Issues</a>
-
+                            {% if current_user.is_admin %}
+                                <a href="{{ url_for('admin.departments') }}">Departments</a>
+                            {% endif %}
                             {% endif %}
 
 
@@ -49,6 +48,7 @@
                                     <li><a href="{{ url_for('auth.register') }}"><span
                                     class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Register</a></li>
                                 {% endif %}
+
                             </ul>
                         </div>
                         </div>
@@ -64,6 +64,7 @@
                             {% endfor %} {% block page_content %}{% endblock %}
                         </div>
                     {% endblock content %}
+
                     {% block scripts %}
                         {{ super() }} {{ moment.include_moment() }}
                     {% endblock scripts %}

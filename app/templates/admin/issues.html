@@ -1,0 +1,23 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% extends "index.html" %}
+
+
+
+{% block page_content %}
+                  {%if current_user.is_admin %}
+
+                        <h1>{{ open_issues }} : open issues</h1>
+
+                        <h1>{{total_issues}}: totalissues</h1>
+                        <h1>{{closed_issues}}: closed issues</h1>
+                        <ul class="list-group">
+
+      {% for issue in issues_ %}
+        <li class="list-group-item">
+          {{ issue.name }}
+        </li>
+      {% endfor %}
+    </ul>
+      {% endif %}
+{% endblock %}

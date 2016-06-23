@@ -1,8 +1,15 @@
 
 {% extends "base.html" %}
 {% block page_content %}
-{% if current_user.is_authenticated %}
-    <h4> Hello, {{ current_user.username }}</h4>
+{% if not current_user.is_authenticated %}
+
+{%else%}
+<div class = "jumbotron">
+    <h2>Welcome to Issue Tracker{% if current_user.is_admin %} Admin {% endif %}</h2>
+    {% include('dashboard.html')%}
+
+
+<div>
 {% endif %}
 
 {% endblock %}
