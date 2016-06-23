@@ -15,10 +15,8 @@ class Department(db.Model):
     name = db.Column(db.String(120), unique=True)
     dept_head = db.Column(db.Integer)
 
-    from werkzeug.security import generate_password_hash, check_password_hash
-from flask.ext.login import UserMixin
-from . import db, login_manager
-
+    def __repr__(self):
+        return '<User %r>' % self.name
 
 class Comments(db.Model):
     '''This class creates comment objects
@@ -32,6 +30,8 @@ class Comments(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = db.relationship('User',
                            backref=db.backref('comments', lazy='dynamic'))
+    def __repr__(self):
+        return '<User %r>' % self.user
 
 class Issue(db.Model):
     '''This class creates issues objects
@@ -53,6 +53,8 @@ class Issue(db.Model):
     department = db.relationship('Department',
                                  backref=db.backref('departments',
                                                     lazy='dynamic'))
+    def __repr__(self):
+        return '<User %r>' % self.name
 
 
 class Role(db.Model):
@@ -77,7 +79,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String, unique=True)
     username = db.Column(db.String, unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
-    #is_admin = db.Column(db.Boolean, default = False)
+    is_admin = db.Column(db.Boolean, default = False)
 
 
     @property
