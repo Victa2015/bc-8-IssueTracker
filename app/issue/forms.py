@@ -1,9 +1,7 @@
 from flask_wtf import Form
 from wtforms import StringField, TextAreaField, SelectField, SubmitField
-from wtforms.validators import Required, Length, Email, Regexp, EqualTo
-from wtforms import ValidationError, validators
+from wtforms import validators
 from ..models import User, Department
-
 
 
 class IssueForm(Form):
@@ -14,15 +12,16 @@ class IssueForm(Form):
     name = StringField('Issue',
                        [validators.Required(message='Please enter the issue.')]
                        )
-    description = TextAreaField('Details',
+    description = TextAreaField('Issue Description',
                                 [validators.required(
                                     message='Please describe your issue.')])
     priority = SelectField('Priority', choices=[
                     ('high', 'High'), ('medium', 'Medium'), ('low', 'Low')])
 
-    department = SelectField('Department', choices=[
-                    ('operations', 'Operations'), ('finance', 'Finance'), ('success', 'Success')])
-
+    department = SelectField('Department',
+                             [validators.Required(
+                                 message='Department required.')],
+                             coerce=int)
 
     submit = SubmitField('Report Issue')
 
@@ -30,16 +29,3 @@ class IssueForm(Form):
     #     super(IssueForm, self).__init__(*args, **kwargs)
     #     self.department.choices = [
     #         (dept.id, dept.name) for dept in Department.query.all()]
-class DepartmentForm(Form):
-    '''This class creates a new Department
-    Form object
-    '''
-    name = StringField('Department Name', [validators.Required()])
-    dept_head = SelectField('Department Head', coerce=int)
-    submit = SubmitField('Create Department')
-
-    def __init__(self, *args, **kwargs):
-        super(DepartmentForm, self).__init__(*args, **kwargs)
-        self.dept_head.choices = [
-            (user.id, user.username) for user in User.query.all()
-        ]

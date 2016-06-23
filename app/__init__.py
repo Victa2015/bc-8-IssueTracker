@@ -37,4 +37,10 @@ def create_app(config_name):
     from app.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    from app.admin import admin as admin_blueprint
+    app.register_blueprint(admin_blueprint)
+
+    from app.issue import issue as issue_blueprint
+    app.register_blueprint(issue_blueprint)
+
     return app

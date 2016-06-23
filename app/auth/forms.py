@@ -24,9 +24,9 @@ class RegistrationForm(Form):
     password2 = PasswordField('Confirm password', validators=[Required()])
     submit = SubmitField('Register')
 
-class LoginForm(Form):
-    email = StringField('Email', validators=[Required(), Length(1, 64),
-                                             Email()])
-    password = PasswordField('Password', validators=[Required()])
-    remember_me = BooleanField('Keep me logged in')
-    submit = SubmitField('Log In')
+    def validate_username(self, field):
+        '''This method checks if a username already exists in
+        the database
+        '''
+        if User.query.filter_by(username=field.data).first():
+            raise ValidationError('Username already exists.')

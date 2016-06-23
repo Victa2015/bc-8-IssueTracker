@@ -1,13 +1,57 @@
 
 {% extends "base.html" %}
 {% block page_content %}
-<h4> Hello,
+{% if not current_user.is_authenticated %}
+<div class="intro-header">
+<div class="container">
 
-{% if current_user.is_authenticated %}
-    {{ current_user.username }}
-   {% include 'issue.html' %}
-{% else %}
-    Stranger
-{% endif %}!
- </h4>
+<div class="row">
+   <div class="col-lg-12">
+       <div class="intro-message">
+           <h1>Issue Tracker</h1>
+           <h3>All Your Issues In One Place</h3>
+           <hr class="intro-divider">
+           <ul class="list-inline intro-social-buttons">
+               <li>
+                   <a href="{{ url_for('auth.login') }}" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Login</span></a>
+               </li>
+               <li>
+                   <a href="{{ url_for('auth.register') }}" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Register</span></a>
+               </li>
+
+           </ul>
+       </div>
+   </div>
+</div>
+
+</div>
+<!-- /.container -->
+
+</div>
+<footer>
+<div class="container">
+<div class="row">
+   <div class="col-lg-12">
+    <p> Issue Tracker made by Victor Kironde </p>
+
+   </div>
+</div>
+</div>
+</footer>
+
+<!-- jQuery -->
+<script src="..static/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="..static/js/bootstrap.min.js"></script>
+{%else%}
+<div class = "jumbotron">
+    <h2>Welcome to Issue Tracker{% if current_user.is_admin %} Admin {% endif %}</h2>
+    {% include('dashboard.html')%}
+
+
+<div>
+{% endif %}
+
+
 {% endblock %}
