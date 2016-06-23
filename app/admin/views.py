@@ -15,13 +15,6 @@ def users():
     return render_template('admin/users.html', users_=users_)
 
 
-@admin.route('/issues')
-@login_required
-def issues():
-    issues_ = Issue.query.all()
-    return render_template('admin/issues.html', issues_=issues_)
-
-
 @admin.route('/departments', methods=['GET', 'POST'])
 @login_required
 def departments():
