@@ -1,6 +1,5 @@
 
 *.pyc
 *.js
-*.sqlite
 *.db
 *.DS_Store
