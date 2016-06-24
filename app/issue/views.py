@@ -16,6 +16,6 @@ def view_issues():
         issue = Issue.query.filter_by(id=issue_id).first()
         issue.closed = 1
         db.session.commit()
-        flash("{} Solved".format(issue.name))
+        flash("Issue Solved!")
 
     return render_template('viewissues.html', issues=issues)

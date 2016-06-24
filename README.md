@@ -1,24 +1,24 @@
 # bc-8-IssueTracker
 Issue Tracker
 
-Issue Tracker is a web application written in Python using Flask for the Andela Kenya Class VI Bootcamp project. The application is a simple way to keep track of issues raised by people within an organization.
-
+Issue Tracker is a python web application that keeps track of issues.
 Main Features
 
-The application is able to:
+Features:
 
 Allow users to register and login
 Allow users to raise an issue, specifying the issue subject, description, priority (low, medium, or high), and the department that is to handle the issue
-Allow users to view, edit, and delete their issues
+Allow users to keep track of their issues
 Allow admin users to view all issues
-Allow admin users to comment on issues
+Allow admin users to resolve the issues
 Allow admin users to assign issues to another user for resolution
 Allow admin users to mark issues as resolved (closed) or in-progress
+
 Using Issue Tracker
 
-You may view a live demonstration of Issue Tracker on Heroku. To use the app, you will have to register a new user account and login with the specified details. You may also login to the administrator account using the following credentials:
+You may view a live demonstration of Issue Tracker on Heroku. (https://issuetrackery.herokuapp.com) To use the app, you will have to register a new user account and login with the specified details. You may also login to the administrator account using the following credentials:
 
-Email: admin@it.com Password: cat2016
+Email: victor@gmail.com Password: v
 
 Installation
 
@@ -28,17 +28,14 @@ Prerequisites You should have a working installation of Python 2.7 as well as pi
 
 To install the app:
 
-Clone this repository git clone https://github.com/mbithe/bc-6-my-issue-tracker
+Clone this repository git clone https://github.com/Victa2015/bc-8-IssueTracker
 
 Install requirements pip install -r requirements.txt
 
-Run the server python manage.py runserver
+Run the server python run.py runserver
 
-Workflow
 
-Non-administrative Users
-
-Non-administrative users must register and login to use the application. Once logged in, they can raise an issue. They can view, edit, and delete their issues. The dashboard shows a summary of the status of their issues, whether they are pending(open), in-progress or resolved(closed).
+Non-administrative users must register and login to use the application. Once logged in, they can raise and keep track of their issues.
 
 Administrative Users
 
